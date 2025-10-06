@@ -4,204 +4,350 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ofelos Limited - Pure & Healthy Diabetic Treats</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&family=DM+Sans:wght@400;500&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script>// Fade-in on scroll
-document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Crimson Text', serif;
+        }
+        .caption, small, code {
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 1200px;
+        }
+    </style>
+    
+    <script>
+        // Fade-in on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(el => observer.observe(el));
         });
-    }, { threshold: 0.1 });
-
-    elements.forEach(el => observer.observe(el));
-});</script>
+    </script>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-                <img src="img/backgroundDark.png" alt="Ofelos Logo" class="logo" style="height: 48px; margin-right: 24px;">
-                <nav style="flex: 1;">
-                    <ul style="display: flex; gap: 24px; justify-content: flex-end; margin: 0; padding: 0; list-style: none;">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#benefits">Benefits</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-           
+<body class="text-gray-800 bg-white">
+    <!-- Header -->
+<header class="bg-white sticky top-0 z-50 border-b border-gray-200">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-center py-4 relative">
+      
+      <!-- Centered Logo + Navigation -->
+      <div class="flex items-center space-x-6">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <img src="img/backgroundDark.png" alt="Ofelos Logo" class="h-10 sm:h-12">
         </div>
-    </header>
 
-    <section id="home" class="hero fade-in">
-        <div class="container">
-            <h1>Ofelos Limited</h1>
-            <p>Pure & Healthy Diabetic Treats</p>
-            <img src="img/bg-all.jpg" alt="Ofelos Cookies Assortment" class="hero-image">
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex" id="main-nav">
+          <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 lg:space-x-8">
+            <li><a href="#home" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2 md:py-0">Home</a></li>
+            <li><a href="#about" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2 md:py-0">About</a></li>
+            <li><a href="#benefits" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2 md:py-0">Benefits</a></li>
+            <li><a href="#products" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2 md:py-0">Products</a></li>
+            <li><a href="#contact" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2 md:py-0">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu Button (positioned right) -->
+      <div class="absolute right-4 md:hidden">
+        <button type="button" class="text-gray-700 hover:text-amber-600 focus:outline-none" id="mobile-menu-button">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="hidden md:hidden py-2 border-t border-gray-200" id="mobile-menu">
+      <ul class="flex flex-col space-y-2">
+        <li><a href="#home" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2">Home</a></li>
+        <li><a href="#about" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2">About</a></li>
+        <li><a href="#benefits" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2">Benefits</a></li>
+        <li><a href="#products" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2">Products</a></li>
+        <li><a href="#contact" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-normal block py-2">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <!-- Hero Section -->
+    <section id="home" class="fade-in bg-gradient-to-br from-amber-50 to-white py-12 md:py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-normal text-gray-800 mb-4">Ofelos Limited</h1>
+            <p class="text-lg md:text-xl text-gray-900 mb-8 md:mb-12">Pure & Healthy Diabetic Treats</p>
+            
+            <div class="mb-8 md:mb-12 rounded-2xl overflow-hidden">
+                <img src="img/bg-all.jpg" alt="Ofelos Cookies Assortment" class="hero-image rounded-lg mx-auto">
+            </div>
+            
             <div class="trusted-by">
-                <p>Trusted by</p>
-                <div class="logos">
-                    <img src="img/Tursted by logo/Goodlife Pharmacy Africa_idPx6UPB7F_1.png" alt="GoodLife">
-                    <img src="img/Tursted by logo/artcafe.webp" alt="Artcaffe">
-                    <img src="img/Tursted by logo/pharmapluslogo.webp" alt="Pharmaplus">
-                    <img src="img/Tursted by logo/greenspoon-logo.svg" alt="Greenpeen">
-                    <img src="img/Tursted by logo/healthy-u-logo2-1.jpg" alt="Healthy U">
+                <p class="text-gray-500 mb-4 text-sm">Trusted by</p>
+                <div class="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 items-center">
+                    <img src="img/Tursted by logo/Goodlife Pharmacy Africa_idPx6UPB7F_1.png" alt="GoodLife" class="h-5 md:h-6 lg:h-7">
+                    <img src="img/Tursted by logo/artcafe.webp" alt="Artcaffe" class="h-5 md:h-6 lg:h-7">
+                    <img src="img/Tursted by logo/pharmapluslogo.webp" alt="Pharmaplus" class="h-5 md:h-6 lg:h-7">
+                    <img src="img/Tursted by logo/greenspoon-logo.svg" alt="Greenpeen" class="h-5 md:h-6 lg:h-7">
+                    <img src="img/Tursted by logo/healthy-u-logo2-1.jpg" alt="Healthy U" class="h-5 md:h-6 lg:h-7">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about fade-in">
-        <div class="container">
-            <h2>Welcome to Ofelos</h2>
-            <p>Founded in 2021 by Dr. Gerassimos Fourlanos, Ofelos Ltd is a story of personal struggle turned into a commercial venture. Having suffered from diabetes since 1990, and struggling to find treats that are diabetic-friendly, the founder embarked on a journey to serve this need. After 10 years of vigorous and comprehensive research, Ofelos LTD was birthed. Ofelos LTD is a company dedicated to providing pure, keto & diabetic-friendly treats to people suffering from diabetes and their friends and family.</p>
-            <p>Our Bakery is located at Highway Mall, along Uhuru Highway in Nairobi. Our products are stocked in several Healthy U stores and retailers around the country as well as in Aratus Health Limited (DiaBeters), Goodlife Pharmacy, Onn The Way, Quickmart, Art Caffe Market and many more. The main ingredients in Ofelos cookies are low glycemic index and glycemic load.</p>
+    <!-- About Section -->
+    <section id="about" class="fade-in py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-2xl font-semibold text-start mb-6">Welcome to Ofelos</h2>
+            <div class="space-y-4 md:space-y-6 text-gray-800 text-base md:text-md">
+                <p>Founded in 2021 by Dr. Gerassimos Fourlanos, Ofelos Ltd is a story of personal struggle turned into a commercial venture. Having suffered from diabetes since 1990, and struggling to find treats that are diabetic-friendly, the founder embarked on a journey to serve this need.</p>
+                <p>After 10 years of vigorous and comprehensive research, Ofelos LTD was birthed. Ofelos LTD is a company dedicated to providing pure, keto & diabetic-friendly treats to people suffering from diabetes and their friends and family.</p>
+                <p>Our Bakery is located at Highway Mall, along Uhuru Highway in Nairobi. Our products are stocked in several Healthy U stores and retailers around the country as well as in Aratus Health Limited (DiaBeters), Goodlife Pharmacy, Onn The Way, Quickmart, Art Caffe Market and many more.</p>
+                <p>The main ingredients in Ofelos cookies are low glycemic index and glycemic load.</p>
+            </div>
         </div>
     </section>
 
-    <section id="benefits" class="benefits fade-in">
-        <div class="container">
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <span class="icon">📊</span>
-                    <h3>Diabetic Friendly</h3>
-                    <p>Unlock health benefits with low glycemic ingredients designed for stable blood sugar.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">🌍</span>
-                    <h3>Keto Compatible</h3>
-                    <p>Perfect for low-carb lifestyles, helping maintain ketosis without compromising taste.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">🚧</span>
-                    <h3>Natural & Pure</h3>
-                    <p>Adapt to diverse dietary needs with clean, natural ingredients free from artificial additives.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">📈</span>
-                    <h3>Long Shelf Life</h3>
-                    <p>Enjoy fresh treats anytime with up to 1-year shelf life for most products.</p>
+    <!-- Benefits Section -->
+<section id="benefits" class="py-12 md:py-20 bg-gradient-to-b from-amber-50 to-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <!-- Card 1 -->
+      <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-4 text-center hover:-translate-y-2">
+        <div class="text-4xl md:text-5xl mb-4 md:mb-5 transition-transform duration-300 group-hover:scale-110">📊</div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2 md:mb-3">Diabetic Friendly</h3>
+        <p class="text-gray-600 text-sm md:text-base">Unlock health benefits with low glycemic ingredients designed for stable blood sugar.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-4 text-center border border-gray-100 hover:-translate-y-2">
+        <div class="text-4xl md:text-5xl mb-4 md:mb-5 transition-transform duration-300 group-hover:scale-110">🌍</div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2 md:mb-3">Keto Compatible</h3>
+        <p class="text-gray-600 text-sm md:text-base">Adapt to diverse dietary needs with clean, natural ingredients free from artificial additives.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-4 text-center border border-gray-100 hover:-translate-y-2">
+        <div class="text-4xl md:text-5xl mb-4 md:mb-5 transition-transform duration-300 group-hover:scale-110">🌿</div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2 md:mb-3">Natural & Pure</h3>
+        <p class="text-gray-600 text-sm md:text-base">Made with clean, wholesome ingredients — free from artificial additives or preservatives.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group bg-white rounded-2xl hover:shadow-xl transition-all duration-300 p-4 text-center border border-gray-100 hover:-translate-y-2">
+        <div class="text-4xl md:text-5xl mb-4 md:mb-5 transition-transform duration-300 group-hover:scale-110">⏳</div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2 md:mb-3">Long Shelf Life</h3>
+        <p class="text-gray-600 text-sm md:text-base">Enjoy fresh treats anytime with up to 1-year shelf life for most products.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Products Banner -->
+    <section class="fade-in relative">
+        <div class="h-64 sm:h-80 md:h-96 bg-cover bg-center" style="background-image: url('img/bg-all2.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center">
+                <div class="bg-white bg-opacity-70 p-4 md:p-6 rounded-xl max-w-xs md:max-w-md text-start mx-4">
+                    <h2 class="text-xl md:text-2xl font-semibold">Our Products</h2>
+                    <p class="text-gray-700 text-sm md:text-base">Discover our range of pure and healthy diabetic treats.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="products-banner fade-in">
-        <div class="products-banner-bg" style="background-image: url('img/bg-all2.jpg'); background-size: cover; background-position: center; width: 100%; height: 400px; display: flex; align-items: center; justify-content: center;">
-            <div style="background: rgba(255,255,255,0.7); padding: 2rem; border-radius: 8px;">
-            <h2 style="margin: 0;">Our Products</h2>
-            <p style="margin: 0;">Discover our range of pure and healthy diabetic treats.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="products" class="products fade-in">
-        <div class="container">
-            <div class="product-row">
-                <div class="product-text">
-                    <h3>Spicy Sesame (Cinnamon & Simsim Cookies)</h3>
-                    <p class="caption">Shelf Life: 1 Year. Item Weight: 150g, 28 cookies.</p>
-                    <p>Ingredients: Blanched Almond Flour, Coconut Flour, Sesame Seeds, Sesame Flour, Erythritol, Psyllium, Cinnamon, Salt, Baking Soda, Apple Vinegar, Vanilla Essence, Cloves Powder, Water And Coconut Oil.</p>
-                    <ol>
+    <!-- Products Section -->
+    <section id="products" class="fade-in py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <!-- Product 1 -->
+            <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-10 mb-12 md:mb-16">
+                <div class="lg:w-1/2">
+                    <img src="img/sesame.jpg" alt="Spicy Sesame Cookies" class="rounded-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Spicy Sesame (Cinnamon & Simsim Cookies)</h3>
+                    <p class="caption text-gray-500 mb-3 md:mb-4 text-sm">Shelf Life: 1 Year. Item Weight: 150g, 28 cookies.</p>
+                    <p class="mb-3 md:mb-4 text-gray-700 text-sm md:text-base">Ingredients: Blanched Almond Flour, Coconut Flour, Sesame Seeds, Sesame Flour, Erythritol, Psyllium, Cinnamon, Salt, Baking Soda, Apple Vinegar, Vanilla Essence, Cloves Powder, Water And Coconut Oil.</p>
+                    <ol class="list-decimal pl-5 space-y-1 md:space-y-2 text-gray-700 text-sm md:text-base">
                         <li>Enjoy a spicy kick with natural flavors.</li>
                         <li>Perfect for sharing with friends and family.</li>
                         <li>Supports keto and diabetic lifestyles.</li>
                         <li>Maintains freshness for extended periods.</li>
                     </ol>
                 </div>
-                <img src="img/sesame.jpg" alt="Spicy Sesame Cookies" class="product-image">
             </div>
-            <div class="product-row reverse">
-                <div class="product-text">
-                    <h3>Cardamom Cookies</h3>
-                    <p class="caption">Shelf Life: 1 Year. Item Weight: 150g, 28 cookies.</p>
-                    <p>Ingredients: Blanched Almond Flour, Crushed Hazelnut, Coconut Flour, Erythritol, Psyllium, Vanilla Powder, Salt, Cardamon, Baking Soda, Apple Vinegar, Water And Coconut Oil.</p>
-                    <ol>
+            
+            <!-- Product 2 -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-6 md:gap-10 mb-12 md:mb-16">
+                <div class="lg:w-1/2">
+                    <img src="img/cardamon.jpg" alt="Cardamom Cookies" class="rounded-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Cardamom Cookies</h3>
+                    <p class="caption text-gray-500 mb-3 md:mb-4 text-sm">Shelf Life: 1 Year. Item Weight: 150g, 28 cookies.</p>
+                    <p class="mb-3 md:mb-4 text-gray-700 text-sm md:text-base">Ingredients: Blanched Almond Flour, Crushed Hazelnut, Coconut Flour, Erythritol, Psyllium, Vanilla Powder, Salt, Cardamon, Baking Soda, Apple Vinegar, Water And Coconut Oil.</p>
+                    <ol class="list-decimal pl-5 space-y-1 md:space-y-2 text-gray-700 text-sm md:text-base">
                         <li>Enjoy guilt-free snacking with low carbs.</li>
                         <li>Share with family for healthy treats.</li>
                         <li>Perfect for keto and diabetic diets.</li>
                         <li>Long-lasting freshness for any occasion.</li>
                     </ol>
                 </div>
-                <img src="img/cardamon.jpg" alt="Cardamom Cookies" class="product-image">
             </div>
-            <div class="product-row">
-                <div class="product-text">
-                    <h3>Peanut Cookies (Njugu)</h3>
-                    <p class="caption">Shelf Life: 8 months. Item Weight: 150g, 28 cookies.</p>
-                    <p>Ingredients: Peanuts, Coconut Flour, Erythritol, Psyllium husks, Pure vanilla extract, Sodium Bicarbonate, Apple cider vinegar, Cold-pressed coconut oil.</p>
-                    <ol>
+            
+            <!-- Product 3 -->
+            <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-10 mb-12 md:mb-16">
+                <div class="lg:w-1/2">
+                    <img src="img/peanut.jpg" alt="Peanut Cookies" class="rounded-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Peanut Cookies (Njugu)</h3>
+                    <p class="caption text-gray-500 mb-3 md:mb-4 text-sm">Shelf Life: 8 months. Item Weight: 150g, 28 cookies.</p>
+                    <p class="mb-3 md:mb-4 text-gray-700 text-sm md:text-base">Ingredients: Peanuts, Coconut Flour, Erythritol, Psyllium husks, Pure vanilla extract, Sodium Bicarbonate, Apple cider vinegar, Cold-pressed coconut oil.</p>
+                    <ol class="list-decimal pl-5 space-y-1 md:space-y-2 text-gray-700 text-sm md:text-base">
                         <li>Rich peanut flavor for satisfying snacks.</li>
                         <li>Ideal for on-the-go healthy eating.</li>
                         <li>Supports blood sugar management.</li>
                         <li>Natural ingredients for pure enjoyment.</li>
                     </ol>
                 </div>
-                <img src="img/peanut.jpg" alt="Peanut Cookies" class="product-image">
             </div>
-            <div class="product-row reverse">
-                <div class="product-text">
-                    <h3>Coconut and Cacao Nibs Cookies</h3>
-                    <p class="caption">Shelf Life: 1 Year. Item Weight: 150g, 28 cookies.</p>
-                    <p>Ingredients: Blanched Almond Flour, Desiccated Coconut, Coconut Flour, Erythritol, Psyllium, Vanilla Powder, Salt, Cacao Nibs, Baking Soda, Apple Vinegar, Water And Coconut Oil.</p>
-                    <ol>
+            
+            <!-- Product 4 -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-6 md:gap-10 mb-12 md:mb-16">
+                <div class="lg:w-1/2">
+                    <img src="img/coconut.jpg" alt="Coconut and Cacao Nibs Cookies" class="rounded-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Coconut and Cacao Nibs Cookies</h3>
+                    <p class="caption text-gray-500 mb-3 md:mb-4 text-sm">Shelf Life: 1 Year. Item Weight: 150g, 28 cookies.</p>
+                    <p class="mb-3 md:mb-4 text-gray-700 text-sm md:text-base">Ingredients: Blanched Almond Flour, Desiccated Coconut, Coconut Flour, Erythritol, Psyllium, Vanilla Powder, Salt, Cacao Nibs, Baking Soda, Apple Vinegar, Water And Coconut Oil.</p>
+                    <ol class="list-decimal pl-5 space-y-1 md:space-y-2 text-gray-700 text-sm md:text-base">
                         <li>Tropical flavors with chocolatey crunch.</li>
                         <li>Great for dessert or mid-day boosts.</li>
                         <li>Keto-friendly with low glycemic load.</li>
                         <li>Extended shelf life for convenience.</li>
                     </ol>
                 </div>
-                <img src="img/coconut.jpg" alt="Coconut and Cacao Nibs Cookies" class="product-image">
             </div>
-            <div class="product-row">
-                <div class="product-text">
-                    <h3>Stevia Sweetener</h3>
-                    <p class="caption">Natural zero-calorie sweetener.</p>
-                    <p>Natural sweetener perfect for diabetic and keto lifestyles. Use in drinks, baking, and more for zero-calorie sweetness.</p>
-                    <ol>
+            
+            <!-- Product 5 -->
+            <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-10">
+                <div class="lg:w-1/2">
+                    <img src="img/sweetener.jpg" alt="Stevia Sweetener" class="rounded-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4">Stevia Sweetener</h3>
+                    <p class="caption text-gray-500 mb-3 md:mb-4 text-sm">Natural zero-calorie sweetener.</p>
+                    <p class="mb-3 md:mb-4 text-gray-700 text-sm md:text-base">Natural sweetener perfect for diabetic and keto lifestyles. Use in drinks, baking, and more for zero-calorie sweetness.</p>
+                    <ol class="list-decimal pl-5 space-y-1 md:space-y-2 text-gray-700 text-sm md:text-base">
                         <li>Enhance beverages without sugar spikes.</li>
                         <li>Ideal for baking diabetic treats.</li>
                         <li>Supports overall health goals.</li>
                         <li>Pure and plant-based alternative.</li>
                     </ol>
                 </div>
-                <img src="img/sweetener.jpg" alt="Stevia Sweetener" class="product-image">
             </div>
         </div>
     </section>
 
-    <section class="testimonial fade-in">
-        <div class="container">
-            <div class="testimonial-content">
-                <p>"These treats have completely transformed my snacking habits. As a diabetic, I couldn't imagine enjoying cookies again without worry!"</p>
-                <p>- Jane Doe, Satisfied Customer</p>
+    <!-- Testimonial Section -->
+    <section class="fade-in py-12 md:py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-8 md:gap-12 max-w-5xl mx-auto">
+                <div class="lg:w-1/2">
+                    <blockquote class="text-xl md:text-2xl italic text-gray-700 mb-4 md:mb-6">
+                        "These treats have completely transformed my snacking habits. As a diabetic, I couldn't imagine enjoying cookies again without worry!"
+                    </blockquote>
+                    <p class="text-base md:text-lg font-medium">- Jane Lorra, Satisfied Customer</p>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="img/bg-cardamon.jpg" alt="Testimonial Image" class="rounded-2xl w-full">
+                </div>
             </div>
-            <img src="img/bg-cardamon.jpg" alt="Testimonial Image" class="testimonial-image">
         </div>
     </section>
 
-    <section id="contact" class="contact fade-in">
-        <div class="container">
-            <h2>Connect with Us</h2>
-            <p>Schedule a quick call to learn how we can turn your health needs into a powerful advantage.</p>
-            <p>Location: Highway Mall, along Uhuru Highway, Nairobi</p>
-            <p>Email: info@ofelosltd.com</p>
-            <p>Phone: +254 748 280 321</p>
-        </div>
-    </section>
+    <!-- Contact Section -->
+<section id="contact" class="py-12 md:py-16 bg-white text-gray-800">
+  <div class="container mx-auto px-4 md:px-6 text-center">
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4">Connect with Us</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto mb-8 md:mb-10 text-sm md:text-base">
+      Schedule a quick call to learn how we can turn your health needs into a powerful advantage.
+    </p>
 
-    <footer>
-        <div class="container">
-            <img src="img/backgroundDark.png" alt="Ofelos Logo" class="logo" sizes="250px" style="height: 132px; margin-bottom: 16px;">
-            <p>&copy; 2025 Ofelos Limited. All rights reserved.</p>
+    <div class="space-y-3 md:space-y-4 text-sm md:text-base">
+      <p><span class="font-medium text-gray-700">📍 Location:</span> Highway Mall, along Uhuru Highway, Nairobi</p>
+      <p><span class="font-medium text-gray-700">✉️ Email:</span> 
+        <a href="mailto:info@ofelosltd.com" class="text-amber-600 hover:underline">info@ofelosltd.com</a>
+      </p>
+      <p><span class="font-medium text-gray-700">📞 Phone:</span> 
+        <a href="tel:+254748280321" class="text-amber-600 hover:underline">+254 748 280 321</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-8 md:py-12">
+        <div class="container mx-auto px-4 text-center">
+            <img src="img/backgroundDark.png" alt="Ofelos Logo" class="h-16 md:h-24 mx-auto mb-4 md:mb-6">
+            <p class="text-gray-600 text-sm md:text-base">&copy; 2025 Ofelos Limited. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Mobile menu script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
